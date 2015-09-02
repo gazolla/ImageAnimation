@@ -57,9 +57,12 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         cell.layer.cornerRadius = 4
         cell.backgroundColor = UIColor.whiteColor()
-        cell.imgView.highlightedAnimationImages = ["1","2","3","4","5", "6","7","8"].map{UIImage(named: $0)!}
         
-        cell.imgView.animationImages = ["1","2","3","4","5", "6","7","8"].map{UIImage(named: $0)!}
+        let animationArray = ["1","2","3","4","5", "6","7","8"].map{UIImage(named: $0)!}
+
+        cell.imgView.highlightedAnimationImages = animationArray
+        cell.imgView.animationImages = animationArray
+            
         cell.imgView.animationDuration = NSTimeInterval(0.8)
         cell.imgView.startAnimating()
         return cell
