@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var items:[String] = ["one", "two", "three", "four"]
+    var items:[String] = ["one", "two", "three","one", "two", "three","one", "two", "three", "four"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.backgroundColor = UIColor.whiteColor()
         
         let animationArray = ["1","2","3","4","5", "6","7","8"].map{UIImage(named: $0)!}
-
+        
+        //SOLUTION: add uiimage array to highlightedAnimationImages also
         cell.imgView.highlightedAnimationImages = animationArray
         cell.imgView.animationImages = animationArray
             
@@ -68,11 +69,19 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    //SOLUTION: restart animation in didDeselectItemAtIndexPath
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CustomCell{
+            cell.imgView.startAnimating()
+        }
     }
-    
+ 
+    //SOLUTION: restart animation in didSelectItemAtIndexPath
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomCell
+        cell.imgView.startAnimating()
+        
         var alert = UIAlertController(title: "Alert!", message: "Cell tapped", preferredStyle: UIAlertControllerStyle.Alert)
         var action = UIAlertAction(title: "ok", style: UIAlertActionStyle.Cancel) { (dd) -> Void in }
         alert.addAction(action)
