@@ -60,6 +60,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let animationArray = ["1","2","3","4","5", "6","7","8"].map{UIImage(named: $0)!}
         
+        //-----------------
         //SOLUTION: add uiimage array to highlightedAnimationImages also
         cell.imgView.highlightedAnimationImages = animationArray
         cell.imgView.animationImages = animationArray
@@ -69,6 +70,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
+    //-------------
     //SOLUTION: restart animation in didDeselectItemAtIndexPath
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CustomCell{
@@ -76,6 +78,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
  
+    //-----------
     //SOLUTION: restart animation in didSelectItemAtIndexPath
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
