@@ -71,6 +71,23 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     //-------------
+    //SOLUTION: restart animation in didHighlightItemAtIndexPath
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CustomCell{
+            cell.imgView.startAnimating()
+        }
+
+    }
+    
+    //-------------
+    //SOLUTION: restart animation in didUnhighlightItemAtIndexPath
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CustomCell{
+            cell.imgView.startAnimating()
+        }
+    }
+    
+    //-------------
     //SOLUTION: restart animation in didDeselectItemAtIndexPath
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CustomCell{
